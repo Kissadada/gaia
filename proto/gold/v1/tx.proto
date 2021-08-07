@@ -1,0 +1,30 @@
+syntax = "proto3";
+package gold.v1;
+
+option go_package = "github.com/kissadada/gaia/x/gold/types";
+
+// Msg defines the gold Msg service.
+service Msg {
+  // BuyGold
+  rpc BuyGold(MsgBuyGold) returns (MsgBuyGoldResponse);
+  // SellGold
+  rpc SellGold(MsgSellGold) returns (MsgSellGoldResponse);
+}
+
+// MsgBuyGold
+message MsgBuyGold {
+
+  string address = 1;
+  int32 amount = 2;
+}
+// MsgBuyGoldResponse
+message MsgBuyGoldResponse {}
+
+// MsgSellGold
+message MsgSellGold {
+
+  string address = 1;
+  int32 amount = 2;
+}
+// MsgSellGoldResponse
+message MsgSellGoldResponse {}
