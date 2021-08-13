@@ -1,0 +1,17 @@
+syntax = "proto3";
+package gold.v1;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/kissadada/gaia/x/gold/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Gold Balance
+  rpc GoldBalance(QueryGoldBalanceRequest) returns (QueryGoldBalanceResponse);
+}
+
+// MsgBuyGold
+message QueryGoldBalanceRequest { string address = 1; }
+// QueryGoldBalanceResponse
+message QueryGoldBalanceResponse { string amount = 1; }

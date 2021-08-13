@@ -310,7 +310,7 @@ func NewGaiaApp(
 	app.EvidenceKeeper = *evidenceKeeper
 	/****  Module Options ****/
 
-	app.GoldKeeper = goldkeeper.NewKeeper(appCodec, keys[goldtypes.StoreKey], app.AccountKeeper, app.BankKeeper)
+	app.GoldKeeper = goldkeeper.NewKeeper(appCodec, keys[goldtypes.StoreKey], app.BankKeeper)
 
 	/****  Module Options ****/
 	var skipGenesisInvariants = false

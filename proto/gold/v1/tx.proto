@@ -1,6 +1,8 @@
 syntax = "proto3";
 package gold.v1;
 
+import "gogoproto/gogo.proto";
+
 option go_package = "github.com/kissadada/gaia/x/gold/types";
 
 // Msg defines the gold Msg service.
@@ -15,7 +17,10 @@ service Msg {
 message MsgBuyGold {
 
   string address = 1;
-  int32 amount = 2;
+  bytes amount = 2 [
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.nullable) = false
+  ];
 }
 // MsgBuyGoldResponse
 message MsgBuyGoldResponse {}
@@ -24,7 +29,10 @@ message MsgBuyGoldResponse {}
 message MsgSellGold {
 
   string address = 1;
-  int32 amount = 2;
+  bytes amount = 2 [
+    (gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+    (gogoproto.nullable) = false
+  ];
 }
 // MsgSellGoldResponse
 message MsgSellGoldResponse {}
