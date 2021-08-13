@@ -58,9 +58,7 @@ func (s msgServer) SellGold(goCtx context.Context, msg *types.MsgSellGold) (*typ
 	if goldBalance.GTE(msg.Amount) {
 		s.Keeper.SetGoldAmount(ctx, addr, goldBalance.Sub(msg.Amount))
 
-		balance.Add(goldCoinAdd)
-
-		err = s.Keeper.bankKeeper.SetBalance(ctx, addr, balance)
+		err = s.Keeper.bankKeeper.SetBalance(ctx, addr, balance.Add(goldCoinAdd))
 		if err != nil {
 			return nil, err
 		}

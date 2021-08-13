@@ -28,9 +28,10 @@ func NewTxCmd() *cobra.Command {
 
 func NewBuyGoldCmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:  "buygold [amount]",
-		Args: cobra.ExactArgs(1),
+		Use:  "buygold [addr] [amount]",
+		Args: cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
+			cmd.Flags().Set(flags.FlagFrom, args[0])
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
@@ -58,9 +59,10 @@ func NewBuyGoldCmd() *cobra.Command {
 
 func NewSellGoldCmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:  "sellgold [amount]",
-		Args: cobra.ExactArgs(1),
+		Use:  "sellgold [addr] [amount]",
+		Args: cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
+			cmd.Flags().Set(flags.FlagFrom, args[0])
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
